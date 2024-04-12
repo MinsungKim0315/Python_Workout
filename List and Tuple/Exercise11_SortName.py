@@ -1,3 +1,6 @@
+'''
+sort the dictionary based on the 'last'. If 'last' is equal, then use 'first'
+'''
 import operator
 
 PEOPLE = [{
