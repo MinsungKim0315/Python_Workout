@@ -1,4 +1,5 @@
-# Python note
+# Python
+## Python notes
 * 의미 없는 소수점 제거
 ```python
 output_a = 52.0
@@ -386,4 +387,25 @@ print(merged_list)  # 출력: [1, 2, 3, 4, 5, 6]
 my_list = [1, 2, 3, 3, 4, 5, 5]
 my_set = set(my_list)
 print(my_set)  # 출력: {1, 2, 3, 4, 5}
+```
+## Python codes
+* 플래그 이용, 배열 안의 아이템 접근법
+```python
+def solution(arr, queries):
+    answer = []
+    for query in queries:
+        i, j, k = query
+        sub_arr = arr[i:j+1]
+        sub_arr.sort()
+        found = False
+        for num in sub_arr:
+            if num > k:
+                answer.append(num)
+                found = True
+                break
+        if not found:
+            answer.append(-1)
+    
+    return answer
+print(solution([0, 1, 2, 4, 3], [[0, 4, 2],[0, 3, 2],[0, 2, 2]]))   #result: [3, 4, -1]
 ```
