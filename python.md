@@ -388,6 +388,91 @@ my_list = [1, 2, 3, 3, 4, 5, 5]
 my_set = set(my_list)
 print(my_set)  # 출력: {1, 2, 3, 4, 5}
 ```
+* Memoization
+>   1. 딕셔너리를 사용해서 한 번 계산한 값을 저장함. 이렇게 메모가 되어 있으면 처리를 수행하지 않고 곧바로 메모된 값을 돌려주면서 코드의 속도를 빠르게 만듬
+>   2. 재귀함수와 함께 많이 사용되는 기술
+```python
+dictionary = {
+    1: 1,
+    2: 1
+}
+def fibonacci(n):
+    if n in dictionary:
+        # 메모가 되어 있으면 메모된 값을 리턴
+        return dictionary[n]
+    else:
+        ouput = new_fib(n-1) + new_fib(n-2)
+        dictionary[n] = ouput
+        return ouput
+```
+* 함수를 매개변수로 전달하는 중요 표준 함수
+>   1. map(function, iterable, *iterables):  
+>   해당 함수를 반복 가능한 객체의 각 요소에 적용하고, 그 결과를   새로운 리스트로 반환
+>   2. filter(fuction, iterable):  
+> 해당 함수를 반복 가능한 객체의 각 요소에 적용하고, 함수가 True를 반환하는 요소만 선택하여 새로운 리스트로 반환
+> > * lamda arguments: expression  
+> > ->  anonymous function that can have any number of arguments but can only have one expression  
+> > -> used when you're passing a function as an argument to another function or when you want to create a quick inline function
+```python
+numbers = [1, 2, 3, 4, 5]
+squared = map(lambda x:x**2, numbers)
+even_nums = filter(lambda x: x % 2 == 0, numbers)
+print(list(squared))    #result: [1, 4, 9, 16, 25]
+print(list(even_nums))  #result: [2, 4]
+```
+* 파일 처리
+>   1. 형태: 파일 객체 = open("파일 경로", "모드")
+>   2. 모드:  
+> w -> write; 새로 쓰기 모드  
+> a -> append; 뒤에서 이어서 쓰기  
+> r -> read; 읽기
+> > *  파일 닫기: 파일 객체.close()
+> > * with 키워드: with 구문이 종료될 때 자동으로 파일 닫힘  
+> > ```python
+> >with open('example.txt', 'w') as file:
+> >     file.write('hello world')
+> >     contents = file.read()
+> >print(contents)  #result: hello world
+> >```
+> > * 텍스트를 사용해 데이터를 구조적으로 표현: CSV, XML, JSON
+> > > * CSV: 한 줄에 하나의 데이터를 나타내며, 각각의 줄은 쉼표를 사용해 데이터 구분
+```python
+import random
+
+alphabet = list('abcdefghijklmnop')
+with open('test.txt', 'w')as file:
+    for i in range(1000):
+        name = random.choice(alphabet) + random.choice(alphabet)
+        weight = random.randrange(40, 100)
+        height = random.randrange(140, 200)
+
+        # write data in text file in CSV format
+        file.write(f'{name}, {weight}, {height}\n')
+
+with open('test.txt', 'r') as file:
+    # read data line by line
+    for line in file:
+        # define variables
+        (name, weight, height) = line.strip().split(', ')
+
+        if(not name) or (not weight) or (not height):
+            continue
+
+        bmi = int(weight) / ((int(height) / 100) **2)
+        result = ''
+        if 25 <= bmi:
+            result = 'over weight'
+        elif 18.5 <= bmi:
+            result = 'normal'
+        else:
+            result = 'low'
+        
+        print(f'name: {name}\n'
+            f'weight: {weight}\n'
+            f'height: {height}\n'
+            f'BMI: {bmi}\n'
+            f'result: {result}')
+```
 ## Python codes
 * 플래그 이용, 배열 안의 아이템 접근법
 ```python
