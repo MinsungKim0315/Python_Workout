@@ -473,6 +473,19 @@ with open('test.txt', 'r') as file:
             f'BMI: {bmi}\n'
             f'result: {result}')
 ```
+* all(iterable): Return True if all elements of the iterable are true
+```python
+def solution(l, r):
+    answer = []
+    for num in range(l, r+1):
+        num_str = str(num)
+        if all(char in '05' for char in num_str):
+            answer.append(num)
+
+    return answer if answer else [-1]
+print(solution(5, 555)) #result: [5, 50, 55, 500, 505, 550, 555]
+print(solution(10, 20)) #result: [-1]
+```
 ## Python codes
 * 플래그 이용, 배열 안의 아이템 접근법
 ```python
@@ -493,4 +506,22 @@ def solution(arr, queries):
     
     return answer
 print(solution([0, 1, 2, 4, 3], [[0, 4, 2],[0, 3, 2],[0, 2, 2]]))   #result: [3, 4, -1]
+```
+* 쿼리 배열 안의 item들을 조건으로 사용할 때 item들에 이름 지정
+```python
+# 각 query마다 순서대로 s ≤ i ≤ e인 모든 i에 대해 i가 k의 배수이면 arr[i]에 1을 더합니다. 위 규칙에 따라 queries를 처리한 이후의 arr를 return
+arr = [0, 1, 2, 4, 3]
+queries = [[0, 4, 1], [0, 3, 2], [0, 3, 3]]
+temp = []
+for query in queries:
+    start, end, divisor = query
+    for i in range(start, end + 1):
+        if i % divisor == 0:
+            temp.append(i)
+for i in range(len(arr)):
+    for num in temp:
+        if i == num:
+            arr[i] += 1
+
+print(arr)  #result: [3, 2, 4, 6, 4]
 ```
