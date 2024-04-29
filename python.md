@@ -486,6 +486,81 @@ def solution(l, r):
 print(solution(5, 555)) #result: [5, 50, 55, 500, 505, 550, 555]
 print(solution(10, 20)) #result: [-1]
 ```
+* Python Standard Modules
+>   1. random module: Generate random values
+>```python
+>import random
+>
+>print('random module')
+>
+>print('- random(): ', random.random())
+>#result: 0.26034056445653153
+>
+>print('-uniform(10, 20): ', random.uniform(10, 20))
+>#result: 14.121063908248777
+>
+>print('- randrange(5, 10): ', random.randrange(5, 10))
+>#result: 9
+>
+>print('- choice([1, 2, 3, 4, 5]): ', random.choice([1, 2, 3, 4, 5]))
+>#result: 1
+>
+>print('- shuffle([1, 2, 3, 4, 5])', random.shuffle([1, 2, 3, 4, 5]))
+>#result: None
+>
+>print('- sample([1, 2, 3, 4, 5], k=2)', random.sample([1, 2, 3, 4, 5], k=2))
+>#result: [1, 4]
+>```
+>   2. sys module: 파이썬 인터프리터와 관련된 기능을 제공
+>   3. os module: 운영 체계와 상호 작용하기 위한 기능을 제공
+>```python
+>import os
+>print('os name: ', os.name)
+>print('current folder: ', os.getcwd())
+>print('elements of current folder: ', os.listdir())
+>
+>os.mkdir('hello')   #make folder name 'hello'
+>os.rmdir('hello')   #remove folder name 'hello'
+>
+>with open('original.txt', 'w') as file: #make txt file name
+>    file.write('hello')
+>os.rename('original.txt', 'new.txt')    #change file name
+>
+>os.remove('new.txt')    #remove file name 'new.txt'
+>
+>os.system('ipconfig')    #run cmd command line
+>```
+>   4. datetime module: 날짜와 시간을 처리하기 위한 기능을 제공
+>   5. time module: 시간과 관련된 함수를 제공
+>```python
+>import time
+>
+>print('sleep for 5 sec')
+>time.sleep(5)
+># stop running for 5 sec
+>print('end program')
+>```
+>   6. urllib module: URL을 다루고 데이터를 가져오는 기능을 제공
+>```python
+>from urllib import request
+>
+>target = request.urlopen('http://google.com')
+>output = target.read()
+>
+>print(output)
+>```
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------
+
 ## Python codes
 * 플래그 이용, 배열 안의 아이템 접근법
 ```python
