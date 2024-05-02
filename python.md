@@ -549,7 +549,75 @@ print(solution(10, 20)) #result: [-1]
 >
 >print(output)
 >```
+* Class
+>   * Abstraction: 프로그램에서 필요한 요소만을 사용해서 객체를 표현
+>   * Object: 여러 가지 속성을 가질 수 있는 대상
+>   * Object Oriented Programming: 객체와 관련된 코드를 분리
+>   1. 클래스 선언
+>   ```python
+>   class NameOfClass:
+>       #content
+>   ```
+>   2. 클래스 이름과 같은 함수(Constructor)를 사용해서 객체(Instance) 만들기
+>   ```python
+>   InstanceName = NameofClass()
+>   ```
+>   > * 클래스 --> 붕어빵 틀, 인스턴스 --> 실체화된 붕어빵
+>   3. 생성자(Constructor): 클래스 내부에 __init__라는 함수를 만들면 객체를 생성할 때 처리할 내용을 작성.    
+클래스 내부의 함수는 첫 번째 매개변수로 반드시 self 입력.    
+self는 자기자신을 나타내는 딕셔너리.
+>   ```python
+>   class NameOfClass:
+>       def __init__(self, var1, var2, ...):
+>           self.var1 = var1
+>           self.var2 = var2
+>           ...
+>   ```
+>   4. 메소드(Method): 클래스가 가지고 있는 함수.    
+생성자 선언하는 방법과 동일.
+>   ```python
+>   class NameOfClass:
+>       def MethodName(self, var1, var2, ...):
+>           #content
+>   ```
+```python
+class Student:
+    def __init__(self, name, korean, math, english, science):
+        self.name = name
+        self.korean = korean
+        self.math = math
+        self.english = english
+        self.science = science
 
+    def get_sum(self):
+        return self.korean + self.math + self.english + self.science
+    
+    def get_adv(self):
+        return self.get_sum()/4
+
+    def to_string(self):
+        return f'{self.name}\t{self.get_sum()}\t{self.get_adv()}'
+
+students = [
+    Student("Kim", 87, 98, 88, 95),
+    Student("Park", 87, 98, 8, 95),
+    Student("Lim", 87, 9, 88, 95),
+    Student("Yuun", 8, 98, 88, 95),
+    Student("Jung", 7, 98, 88, 95)
+]
+
+print('name', 'total', 'adv', sep='\t')
+for student in students:
+    print(student.to_string())
+
+# result
+# name    total   adv
+# Kim     368     92.0
+# Park    288     72.0
+# Lim     279     69.75
+# Yuun    289     72.25
+# Jung    288     72.0
+```
 
 
 
