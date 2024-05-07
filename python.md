@@ -694,3 +694,15 @@ for i in range(len(arr)):
 
 print(arr)  #result: [3, 2, 4, 6, 4]
 ```
+* my_string에 queries의 명령을 순서대로 처리한 후의 문자열을 return 하는 solution 함수를 작성.    
+queries의 원소는 [s, e] 형태로, my_string의 인덱스 s부터 인덱스 e까지를 뒤집으라는 의미.
+```python
+def solution(my_string, queries):
+    for query in queries:
+        s, e = query
+        my_string = my_string[:s] + my_string[s:e+1][::-1] + my_string[e+1:] #string[::][::] 형식 
+    return my_string
+
+print(solution('rermgorpsam', [[2, 3], [0, 7], [5, 9], [6, 10]]))
+# result: programmers
+```
