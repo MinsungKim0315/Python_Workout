@@ -618,7 +618,33 @@ for student in students:
 # Yuun    289     72.25
 # Jung    288     72.0
 ```
-
+* 문자열 내용 확인 시 유용한 메서드
+> 1. str.startswith: 문자열이 특정 문자열로 시작하는지에 따라서 True/False 반환
+>  ```python
+>  s = 'abcd'
+>  print(s.startswith('a'))
+>  print(s.startswith('abc'))
+>  print(s.startswith('b'))
+>  # result: True, True, False
+>  ```
+> 2. str.endswith: 문자열이 특정 문자열로 끝나는지를 따라서 True/False 반환
+>  ```python
+>  print(s.endswith('d'))
+>  print(s.endswith('cd'))
+>  print(s.endswith('b'))
+>  # result: True, True,False
+>  ```
+> 3. str.strip: 문자열 앙옆 공백을 제거
+>   ```python
+>    a = ' \t\t\ta b c \t\t\n'
+>    print(a.strip())
+>    print(a.lstrip())
+>    print(a.rstrip())
+>    # result: a b c
+>    # reuslt: a b c 		
+>    # result:
+>    #                      a b c
+>   ```
 
 
 
